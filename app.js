@@ -7,9 +7,10 @@ const app = express();
 // config static resources, such as image, css, javascripts
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.send('hello, world.');
-});
+// WARN:(hzyuxiaohua) can call express.static middleware function multiple times
+// app.use(express.static('file'));
+
+app.get('/', require('./views/index'));
 
 app.listen(3000, () => {
   ddlog.info('server running on port 3000');
