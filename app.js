@@ -12,6 +12,9 @@ app.use(express.static('public'));
 
 app.use((req, res, next) => {
   ddlog.info(req.ip + ' ' + req.method + ' ' + req.url);
+  
+  // seting local variables here
+  res.locals.xxx = 'xxx';
   next();
 });
 
