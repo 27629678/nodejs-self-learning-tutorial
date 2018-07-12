@@ -10,6 +10,14 @@ app.use(express.static('public'));
 // WARN:(hzyuxiaohua) can call express.static middleware function multiple times
 // app.use(express.static('file'));
 
+app.use((req, res, next) => {
+  ddlog.info(req.ip + ' ' + req.method + ' ' + req.url);
+  next();
+});
+
+// user router
+app.use('/user', require('./router/user/UserRouter'));
+
 app.get('/', require('./views/index'));
 
 app.listen(3000, () => {
