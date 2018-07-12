@@ -10,5 +10,17 @@ module.exports = {
 
   info: function (message, ...args) {
     logger.info(message, ...args);
+  },
+
+  error: function (message, ...args) {
+    logger.error(message, ...args);
+  },
+
+  fatal: function (message, ...args) {
+    logger.fatal(message, ...args);
+  },
+
+  trace: function (message, ...args) {
+    logger.trace(message, ...args);
   }
 }
