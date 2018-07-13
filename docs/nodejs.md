@@ -1,9 +1,9 @@
-## 工程备注
+### 一、准备知识
 
-### 一、模块备注
+略
 
 
-### 二、NodeJS备注
+### 二、NodeJS Documentation
 
 #### 2.1 Modules
 
@@ -43,29 +43,12 @@ function require(/* ... */) {
 }
 ```
 
-### 三、语法糖备注
+#### 2.2 Cluster集群
 
-#### 3.1 ES6的不定参数函数
+充分利用CPU多核心（多CPU）架构，集群模块的fork()方法可以创建多个进程，与主进程共享端口资源，但进程间不共享进程状态及数据，可根据各进程的运行状态分配任务，但与Nginx的负载均衡不是一回事；
 
-如下代码所示进行：
+#### 2.2 Child-Process子进程
 
-```
-function sum (...numbers) {
-    // 所有的参数都装进numbers数组
-    // 若没有传递参数，numbers数组为空，并不是undefined
-    return numbers.reduce($0+$1);
-}
+这里不要与集群创建的多进程混淆，这里的子进程是Node.js服务启动的子进程，与`popen()`的功能类似，可以调用系统资源，比如执行shell后把结果返回给调用的地方；
 
-sum(1, 2, 3);
-
-```
-
-再看一下，可变参数如何展开：
-
-```
-function sum2(...numbers) {
-    // ...在定义函数时不同
-    // ...在这里是展开操作，与Array.join(',')效果类似，并不同
-    return sum(...numbers);
-}
-```
+> NOTE:相关有用的模块，发挥想象的地方；
